@@ -26,8 +26,8 @@ const char* ssid     = "YOUR_SSID";
 const char* password = "YOUR_PASSWORD";
 
 // Thresholds (adjusted by potentiometer)
-float tempThreshold  = 30.0;   // °C — potentiometer shifts this
-float humidThreshold = 70.0;   // %RH — fixed
+float tempThreshold  = 30.0;   // potentiometer shifts this
+float humidThreshold = 70.0;   // fixed
 
 void setup() {
   Serial.begin(115200);
@@ -78,7 +78,7 @@ void updateDisplay(float temp, float humidity, float threshold) {
   display.setTextSize(2);
   display.setCursor(0, 14);
   display.print(temp, 1);
-  display.print((char)247);   // degree symbol
+  display.print((char)247);  
   display.println("C");
 
   // Humidity
@@ -99,8 +99,8 @@ void updateDisplay(float temp, float humidity, float threshold) {
 }
 
 void loop() {
-  // Read potentiometer → map to temp threshold (20–40°C)
-  int potVal = analogRead(POT_PIN);                   // 0–4095 on ESP32
+  // Read potentiometer to map to temp threshold (20–40 C)
+  int potVal = analogRead(POT_PIN);                  
   tempThreshold = map(potVal, 0, 4095, 20, 40);
 
   // Read DHT sensor
@@ -123,13 +123,13 @@ void loop() {
   bool tooHumid = humidity    >= humidThreshold;
 
   if (tooHot && tooHumid) {
-    setLEDs(0, 0, 0, 1);   // RED — danger
+    setLEDs(0, 0, 0, 1);   // RED - danger
   } else if (tooHot) {
-    setLEDs(0, 1, 0, 0);   // YELLOW —  warm
+    setLEDs(0, 1, 0, 0);   // YELLOW - warm
   } else if (tooHumid) {
-    setLEDs(0, 0, 1, 0);   // BLUE —  humid
+    setLEDs(0, 0, 1, 0);   // BLUE - humid
   } else {
-    setLEDs(1, 0, 0, 0);   // White — all good
+    setLEDs(1, 0, 0, 0);   // White - all good
   }
 
   delay(2000);   // DHT22 max sample rate is 0.5 Hz
