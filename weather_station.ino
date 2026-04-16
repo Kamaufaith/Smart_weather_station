@@ -125,7 +125,7 @@ void loop() {
   if (tooHot && tooHumid) {
     setLEDs(0, 0, 0, 1);   // RED - danger
   } else if (tooHot) {
-    setLEDs(0, 1, 0, 0);   // YELLOW - warm
+    setLEDs(0, 1, 0, 0);   // green- warm
   } else if (tooHumid) {
     setLEDs(0, 0, 1, 0);   // BLUE - humid
   } else {
