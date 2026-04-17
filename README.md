@@ -77,6 +77,11 @@ The OLED shows:
 - Threshold adjustment only affects temperature
 - WiFi is optional and expandable
 
+## Project Images
+
+###  Full Setup
+<img width="565" height="832" alt="Screenshot From 2026-04-17 16-36-49" src="https://github.com/user-attachments/assets/32f49292-c453-4fe3-af16-10e4d617270b" />
+
 ## Author
 Developed as a mini-project using ESP32 for embedded systems and IoT learning
 
